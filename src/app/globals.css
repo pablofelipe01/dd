@@ -2,25 +2,199 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --primary: #1e3a8a;
+  --secondary: #64748b;
+  --accent: #dc2626;
+  --warning: #f59e0b;
+  --success: #10b981;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Selection color */
+::selection {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+/* TOC navigation styling */
+.toc-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: all 0.15s ease-in-out;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #1e3a8a;
+  outline-offset: 2px;
+}
+
+/* Table responsive wrapper */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Print styles */
+@media print {
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Show print header */
+  .print-header {
+    display: block !important;
+  }
+
+  /* Reset main content margins for print */
+  main {
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Hide non-essential elements */
+  aside,
+  header,
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Page breaks */
+  h1, h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  table, figure, blockquote {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Ensure tables print properly */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f0f0f0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Links in print */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  /* Blockquotes in print */
+  blockquote {
+    border-left: 3px solid #666;
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  /* First page */
+  @page :first {
+    margin-top: 1cm;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
 }
