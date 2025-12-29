@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 
 // User credentials
 // rodrigo's access expires 5 days from first deployment
-const RODRIGO_EXPIRY = new Date('2025-12-28T23:59:59Z').getTime(); // 5 days from Dec 23, 2025
+const RODRIGO_EXPIRY = new Date('2026-01-2T23:59:59Z').getTime(); // 5 days from Dec 23, 2025
 
 const USERS: Record<string, { password: string; expiry?: number }> = {
   pablo: {
